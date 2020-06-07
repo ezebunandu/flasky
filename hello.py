@@ -7,12 +7,39 @@ from flask_moment import Moment
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from flask_sqlalchemy import SQLAlchemy
+
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 load_dotenv()
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
+db = SQLAlchemy(app)
+
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
+class Role(db.Model):
+    __tablename__ = 'roles'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    users = db.relationship('User', backref='role')
+
+    def __repr__(self):
+        return f'<Role {self.name!r}>'
+
+
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True, index=True)
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+
+    def __repr__(self):
+        return f'<User {self.username!r}>'
 
 
 class NameForm(FlaskForm):
