@@ -26,7 +26,7 @@ class User(UserMixin, db.Model):
     confirmed = db.Column(db.Boolean, default=False)
 
     @property
-    def password(self):
+    def password():
         raise AttributeError('password is not a readable attribute')
 
     @password.setter
