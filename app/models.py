@@ -1,10 +1,12 @@
+import hashlib
 from datetime import datetime
-from . import db
-from . import login_manager
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin, AnonymousUserMixin
+
+from flask import current_app, request
+from flask_login import AnonymousUserMixin, UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flask import current_app
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from . import db, login_manager
 
 
 class Permission:
@@ -168,6 +170,11 @@ class User(UserMixin, db.Model):
         self.last_seen = datetime.utcnow()
         db.session.add(self)
         db.session.commit()
+
+    def gravatar(self, size=100, default='identicon', rating='g'):
+        url = 'https://secure.gravatar.com/avatar'
+        hash = hashlib.md5(self.email.lower().encode('utf-8')).hexdigest()
+        return f'{url}/{hash}?s={size}&d={default}&r={rating}'
 
     def __repr__(self):
         return f'User <{self.username!r}>'
