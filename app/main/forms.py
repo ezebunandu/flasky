@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import (StringField, 
+from wtforms import (StringField,
                      SubmitField,
                      TextAreaField,
                      BooleanField,
@@ -32,7 +32,7 @@ class EditProfileAdminForm(FlaskForm):
     ])
     confirmed = BooleanField('Confirmed')
     role = SelectField('Role', coerce=int)
-    name = StringField('REal name', validators=[Length(0, 64)])
+    name = StringField('Real name', validators=[Length(0, 64)])
     location = StringField('Location', validators=[Length(0, 64)])
     about_me = TextAreaField('About me')
     submit = SubmitField('Submit')

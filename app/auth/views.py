@@ -65,7 +65,7 @@ def confirm(token):
     return redirect(url_for('main.index'))
 
 
-@auth.before_request
+@auth.before_app_request
 def before_request():
     if current_user.is_authenticated:
         current_user.ping()
