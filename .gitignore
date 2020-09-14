@@ -1,3 +1,14 @@
 # ignore virtual env files
 *_venv
+
+# Ignore Pycache files
 __pycache__
+
+# Ignore env file containing env variables
+.env
+
+# Don't track databases
+*.sqlite
+
+# Do not track vscode settings
+settings.json
