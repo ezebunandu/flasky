@@ -8,4 +8,7 @@ flask-mail
 flask-login
 Werkzeug
 itsdangerous
+flask-pagedown
+markdown
+bleach
 
