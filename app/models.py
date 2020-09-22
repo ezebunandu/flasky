@@ -1,7 +1,7 @@
 import hashlib
 from datetime import datetime
 
-from flask import current_app, request
+from flask import current_app
 from flask_login import AnonymousUserMixin, UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -81,7 +81,7 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(64))
     location = db.Column(db.String(64))
     about_me = db.Column(db.Text())
-    member_since = db.Column(db.DateTime(), default=datetime.utcnow)
+    member_since = db.Column(db.DateTime(), default=db.func.now())
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar_hash = db.Column(db.String(32))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
@@ -197,7 +197,7 @@ class AnonymousUser(AnonymousUserMixin):
         return False
 
 
-login_manager.anonymous_user = AnonymousUserMixin
+login_manager.anonymous_user = AnonymousUser
 
 
 @login_manager.user_loader
@@ -211,4 +211,3 @@ class Post(db.Model):
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
