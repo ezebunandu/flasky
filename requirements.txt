@@ -11,4 +11,6 @@ itsdangerous
 flask-pagedown
 markdown
 bleach
+html5lib
+webencodings
 
