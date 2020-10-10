@@ -1,7 +1,7 @@
 """user_roles
 
 Revision ID: d6feb970cfe1
-Revises: f40044dede91
+Revises: 29f9340bc996
 Create Date: 2020-07-29 19:35:42.341508
 
 """
@@ -11,7 +11,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision = 'd6feb970cfe1'
-down_revision = 'f40044dede91'
+down_revision = '29f9340bc996'
 branch_labels = None
 depends_on = None
 
