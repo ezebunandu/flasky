@@ -12,3 +12,6 @@ __pycache__
 
 # Do not track vscode settings
 settings.json
+
+# Pycharm settings folder
+.idea/
