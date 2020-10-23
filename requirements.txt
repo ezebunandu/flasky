@@ -13,4 +13,4 @@ markdown
 bleach
 html5lib
 webencodings
-
+flask-httpauth
