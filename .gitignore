@@ -15,3 +15,6 @@ settings.json
 
 # Pycharm settings folder
 .idea/
+
+# Ignore temp files
+tmp/*
