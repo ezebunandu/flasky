@@ -14,4 +14,4 @@ bleach
 html5lib
 webencodings
 flask-httpauth
-email_validation
+email_validator

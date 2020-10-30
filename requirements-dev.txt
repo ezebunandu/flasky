@@ -1,6 +1,4 @@
 -r requirements.txt
 python-dotenv
-flake8
-black
 faker
 coverage
