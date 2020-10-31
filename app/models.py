@@ -352,7 +352,7 @@ class Comment(db.Model):
 
     def to_json(self):
         return {
-            'url': url_for('.api.get_comment', id=self.id),
+            'url': url_for('api.get_comment', id=self.id),
             'post_url': url_for('api.get_post', id=self.post_id),
             'body': self.body,
             'body_html': self.body_html,

@@ -50,7 +50,7 @@ def new_post():
 @permission_required(Permission.WRITE)
 def edit_post(id):
     post = Post.query.get_or_404(id)
-    if g.current_app != post.author and \
+    if g.current_user != post.author and \
             not g.current_user.can(Permission.ADMIN):
         return forbidden('Insufficient permissions')
     post.body = request.json.get('body', post.body)

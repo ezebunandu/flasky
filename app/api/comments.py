@@ -34,11 +34,11 @@ def get_comment(id):
     return jsonify(comment.to_json())
 
 
-@api.route('/posts/<int:id>/comments', methods=['GET'])
+@api.route('/posts/<int:id>/comments/', methods=['GET'])
 def get_post_comments(id):
     post = Post.query.get_or_404(id)
     page = request.args.get('page', 1, type=int)
-    pagination = post.comment.order_by(Comment.timestamp.asc()).paginate(
+    pagination = post.comments.order_by(Comment.timestamp.asc()).paginate(
         page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'],
         error_out=False
     )
@@ -57,7 +57,7 @@ def get_post_comments(id):
     })
 
 
-@api.route('/posts/<int:id>/comments', methods=['PUT'])
+@api.route('/posts/<int:id>/comments/', methods=['POST'])
 @permission_required(Permission.COMMENT)
 def new_post_comment(id):
     post = Post.query.get_or_404(id)
