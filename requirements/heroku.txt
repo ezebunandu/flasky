@@ -1,0 +1,3 @@
+Flask-SSLify
+gunicorn
+psycopg2
