@@ -1,9 +1,5 @@
 import os
 
-from flask_migrate import upgrade
-
-from app.models import Role, User
-
 COV = None
 if os.environ.get('FLASK_COVERAGE'):
     import coverage
@@ -14,7 +10,7 @@ if os.environ.get('FLASK_COVERAGE'):
 import sys
 
 import click
-from flask_migrate import Migrate
+from flask_migrate import Migrate, upgrade
 
 from app import create_app, db
 from app.models import Comment, Follow, Permission, Post, Role, User

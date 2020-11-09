@@ -6,7 +6,7 @@ flask-sqlalchemy
 flask-migrate
 flask-mail
 flask-login
-Werkzeug
+Werkzeug==0.16.0
 itsdangerous
 flask-pagedown
 markdown

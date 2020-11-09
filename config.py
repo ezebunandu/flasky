@@ -48,7 +48,7 @@ class ProductionConfig(Config):
 
     @classmethod
     def init_app(cls, app):
-        config.init_app(app)
+        Config.init_app(app)
 
         # email errors to administrators
         import logging
