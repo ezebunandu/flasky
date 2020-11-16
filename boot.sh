@@ -1,4 +1,4 @@
 #!/bin/sh
 source venv/bin/activate
-flasky deploy
+flask deploy
 exec gunicorn -b :5000 --access-logfile - --error-logfile - flasky:app
