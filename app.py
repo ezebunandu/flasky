@@ -60,7 +60,7 @@ class Role(db.Model):
     users = db.relationship("User", backref="role")
 
     def __repr__(self):
-        return f"<Role {self.name: r}>"
+        return f"<Role {self.name!r}>"
 
 
 class User(db.Model):
@@ -70,4 +70,4 @@ class User(db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey("roles.id"))
 
     def __repr__(self):
-        return f"<User {self.username :r}>"
+        return f"<User {self.username!r}>"
