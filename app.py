@@ -21,6 +21,11 @@ bootstrap = Bootstrap(app)
 moment = Moment(app)
 
 
+@app.shell_context_processor
+def make_shell_context():
+    return dict(db=db, User=User, Role=Role)
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
